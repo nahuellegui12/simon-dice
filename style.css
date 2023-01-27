@@ -1,0 +1,33 @@
+.div-cuadros{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cuadro{
+    color: red;
+    margin: 20px 5px;
+    height: 250px;
+    width: 250px;
+    border-radius: 5px;
+}
+
+.cuadro-1{
+    background: #77dd77;
+    opacity: 0.5;
+}
+
+.cuadro-2{
+    background: #fdfd96;
+    opacity: 0.5;
+}
+
+.cuadro-3{
+    background: #ff6961;
+    opacity: 0.5;
+}
+
+.cuadro-4{
+    background: #84b6f4;
+    opacity: 0.5;;
+}

@@ -11,7 +11,7 @@ function seleccionarCuadroAleatorio(){
     let $cuadros = document.querySelectorAll(".cuadro");
     let cuadroAleatorio = Math.floor(Math.random() * $cuadros.length);
     let cuadroSeleccionado = $cuadros[cuadroAleatorio];
-
+    
     return cuadroSeleccionado;
 };
 
@@ -20,23 +20,33 @@ function cambiarEstadoMaquina(){
     secuenciaMaquina.push(cuadroSeleccionado);
 
     secuenciaMaquina.forEach((cuadro, i)=>{
-        resaltarCuadro(cuadro, i);
+        setTimeout(()=>{
+            resaltarCuadro(cuadro, i);
+        }, 500)
     })
+    
 
-    manejarInputUsuario(e)
+    console.log(secuenciaMaquina);
 };
 
-function resaltarCuadro(cuadro, i){
-    setTimeout(()=>{
-        cuadro.style.opacity = 1;
-    },500 + i * 1000 );
+function resaltarCuadro(cuadro, i){ 
+    cuadro.style.opacity = 1;
 
     setTimeout(()=>{
         cuadro.style.opacity = 0.5;
-    },1000 + i * 1000);
+    },500);
 };
 
-
-document.querySelector(".cuadro").onclick = function(event){
-    console.log(event.target);
+function desbloquearInputUsuario() {
+    document.querySelectorAll('.cuadro').forEach(function($cuadro) {
+      $cuadro.onclick = manejarSecuenciaUsuario;
+    });
 }
+
+function manejarSecuenciaUsuario(e) {
+    const $cuadro = e.target;
+    resaltarCuadro($cuadro);
+    secuenciaUsuario.push($cuadro);
+}
+
+  desbloquearInputUsuario();
